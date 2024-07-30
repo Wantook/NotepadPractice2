@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Proj.ViewModel"
+             x:Class="Proj.View.MainPage">
+
+    <ContentPage.BindingContext>
+        <vm:NoteViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="20">
+        <Label Text="Note Title:" />
+        <Entry Text="{Binding NoteTitle}" />
+
+        <Label Text="Note Content:" />
+        <Editor Text="{Binding NoteContent}" HeightRequest="100" />
+
+        <Label Text="Category:" />
+        <Picker ItemsSource="{Binding Categories}" 
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedCategory}" />
+
+        <Button Text="Add Note" Command="{Binding AddNoteCommand}" />
+
+        <Button Text="Show Notes" Command="{Binding ShowNotesCommand}" />
+    </StackLayout>
+
+</ContentPage>
